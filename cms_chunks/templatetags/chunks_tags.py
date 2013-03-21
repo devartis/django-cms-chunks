@@ -47,8 +47,19 @@ def do_chunk_node(parser, token):
     else:
         raise template.TemplateSyntaxError("%r tag requires a 1 or 2 argument" % token.contents.split()[0])
     key = tokens[1]
+    key = ensure_quoted_string(key, "%r tag's argument should be in quotes" % tokens[0])
 
-    return ChunksNode(key, parser, tokens[1:2], random)
+    return ChunksNode(key, parser, token, random)
+
+
+def ensure_quoted_string(string, error_message):
+    '''
+    Check to see if the key is properly double/single quoted and
+    returns the string without quotes
+    '''
+    if not (string[0] == string[-1] and string[0] in ('"', "'")):
+        raise template.TemplateSyntaxError, error_message
+    return string[1:-1]
 
 
 __author__ = 'lgomez'
