@@ -10,6 +10,9 @@ class Chunk(models.Model):
 
     objects = ChunkManager()
 
+    def __unicode__(self):
+        return "Tags: %s. Priority: %s" % (self.tags, self.priority)
+
     def has_tag(self, tag):
         tags = [string.strip() for string in str(self.tags).split(",")]
         return tag in tags
