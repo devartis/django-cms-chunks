@@ -33,7 +33,7 @@ def parse_boolean(tokens):
     if is_boolean_string:
         return boolean_string in true_list
     else:
-        template.TemplateSyntaxError("The second argument of %r tag must be a '%s'" % (tokens[0], boolean_list))
+        raise template.TemplateSyntaxError("The second argument of %r tag must be a '%s'" % (tokens[0], boolean_list))
 
 
 @register.tag(name='chunks')
