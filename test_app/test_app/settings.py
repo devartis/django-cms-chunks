@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'menus',
     'cms_integration',
     'sekizai',
     'south',
