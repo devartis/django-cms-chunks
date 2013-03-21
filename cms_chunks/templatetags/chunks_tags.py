@@ -36,7 +36,7 @@ def parse_boolean(tokens):
         template.TemplateSyntaxError("The second argument of %r tag must be a '%s'" % (tokens[0], boolean_list))
 
 
-@register.simple_tag(name='chunks')
+@register.tag(name='chunks')
 def do_chunk_node(parser, token):
     tokens = token.split_contents()
     token_len = len(tokens)
