@@ -41,10 +41,10 @@ setup(
 
     url='http://github.com/devartis/django-cms-chunks/',
     license=open('LICENSE.txt').read(),
-    description='Simple FAQ app for django',
+    description='Edit chunks of your non CMS pages using django-cms',
     long_description=open('README.md').read(),
 
-    download_url='http://pypi.python.org/packages/source/d/django-simple-faq/django-cms-chunks-%s.tar.gz' % version,
+    download_url='http://pypi.python.org/packages/source/d/django-cms-chunks/django-cms-chunks-%s.tar.gz' % version,
 
     install_requires=install_requires,
 
