@@ -1,5 +1,7 @@
 # Django settings for test_app project.
+import os
 from os.path import join, dirname, abspath, pardir
+from django.conf import settings
 
 PROJECT_PATH = join(abspath(dirname(__file__)), pardir)
 
@@ -7,7 +9,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    (u'Leandro Gomez', 'lgomez@devartis.com'),
 )
 
 MANAGERS = ADMINS
@@ -57,7 +59,8 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
+MEDIA_URL = "/media/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -67,7 +70,8 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
+STATIC_URL = "/static/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -110,9 +114,20 @@ ROOT_URLCONF = 'test_app.urls'
 WSGI_APPLICATION = 'test_app.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, "templates"),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
 )
 
 INSTALLED_APPS = (
@@ -126,8 +141,18 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'cms_integration',
+    'sekizai',
     'south',
-    ''
+    'mptt',
+    'cms',
+    'cms.plugins.text',
+    'django_extensions',
+    'cms_chunks',
+)
+
+CMS_TEMPLATES = (
+    ('example.html', 'Example Template'),
 )
 
 # A sample logging configuration. The only tangible logging

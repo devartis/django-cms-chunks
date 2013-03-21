@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load cms_tags sekizai_tags %}
+{% load chunks_tags %}
+
+<html>
+<head>
+    <title></title>
+    {% render_block "css" %}
+</head>
+<body>
+{% chunks "video" %}
+{% block content %}
+{% endblock content %}
+</body>
+{% render_block "js" %}
+</html>
