@@ -4,6 +4,7 @@ from managers import ChunkManager
 
 
 class Chunk(models.Model):
+    name = models.CharField(max_length=200)
     tags = models.CharField(max_length=200)
     code = PlaceholderField('chunk_placeholder', related_name="chunks")
     priority = models.IntegerField()
