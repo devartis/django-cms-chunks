@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 
 
 class Chunks(TemplateView):
-    pass
+    template_name = "test_template.html"
+
 
 __author__ = 'lgomez'
